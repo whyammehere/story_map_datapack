@@ -21,7 +21,7 @@ execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
 
 
 
-#arrow shenanigans
+#--arrow shenanigans--
 #Replace arrow
 execute as @e[type=arrow,tag=!new_arrow] at @s run summon arrow ~ ~ ~ {Tags:["new_arrow"],Passengers:[{id:"minecraft:marker",Tags:["arrow_rider"]}]}
 
