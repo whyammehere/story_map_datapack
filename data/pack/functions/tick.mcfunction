@@ -23,20 +23,24 @@ execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
 
 #--arrow shenanigans--
 #Replace arrow
-execute as @e[type=arrow,tag=!new_arrow] at @s run summon arrow ~ ~ ~ {Tags:["new_arrow"],Passengers:[{id:"minecraft:marker",Tags:["arrow_rider"]}]}
 
-execute as @e[type=arrow,tag=!new_arrow] at @s run data modify entity @e[type=arrow,tag=new_arrow,limit=1] Motion set from entity @s
+#execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run summon spectral_arrow ~ ~ ~ {Tags:["new_arrow"],Passengers:[{id:"minecraft:marker",Tags:["arrow_rider"]}]}
 
-kill @e[type=arrow,tag=!new_arrow]
+#execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run data modify entity @e[type=spectral_arrow,tag=new_arrow,limit=1,sort=nearest] Motion set from entity @s Motion
 
+execute as @e[tag=lightning_arrow,nbt={LeftOwner:true}] at @s run data modify entity @s Passengers set value {id:"minecraft:marker",Tags:["arrow_rider"]}
+execute as @e[tag=lightning_arrow,nbt={LeftOwner:true}] at @s run summon spectral_arrow ~ ~ ~ {Tags:["new_arrow"],Passengers:[{id:"minecraft:marker",Tags:["arrow_rider"]}]}
+execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run data modify entity @e[type=spectral_arrow,tag=new_arrow,limit=1,sort=nearest] Motion set from entity @s Motion
+
+kill @e[type=spectral_arrow,nbt={LeftOwner:true},tag=lightning_arrow]
 #Event
-execute as @e[type=marker,predicate=!pack:is_riding_arrow] run summon lightning_bolt ~ ~ ~
-execute as @e[type=marker,predicate=!pack:is_riding_arrow] run playsound entity.wolf.hurt master @p
+execute as @e[type=marker] unless predicate pack:is_riding_arrow run summon lightning_bolt ~ ~ ~
+execute as @e[type=marker] unless predicate pack:is_riding_arrow run playsound entity.wolf.hurt master @a
 
-kill @e[type=marker,predicate=!pack:is_riding_arrow]
+execute unless predicate pack:is_riding_arrow run kill @e[type=marker]
 
 
-
+#change to entities nearby?
 #lightning arrow
 execute as @a[tag=Archer] at @s run execute run tag @e[type=spectral_arrow,distance=..4] add lightning_arrow 
 execute as @e[type=spectral_arrow,tag=lightning_arrow,nbt={inGround:true}] at @s run summon lightning_bolt ~ ~ ~
