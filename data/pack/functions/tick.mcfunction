@@ -34,8 +34,8 @@ execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run data modify en
 
 kill @e[type=spectral_arrow,nbt={LeftOwner:true},tag=lightning_arrow]
 #Event
-execute as @e[type=marker] unless predicate pack:is_riding_arrow run summon lightning_bolt ~ ~ ~
-execute as @e[type=marker] unless predicate pack:is_riding_arrow run playsound entity.wolf.hurt master @a
+execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow run summon lightning_bolt ~ ~ ~
+execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow run playsound entity.wolf.hurt master @a
 
 execute unless predicate pack:is_riding_arrow run kill @e[type=marker]
 
