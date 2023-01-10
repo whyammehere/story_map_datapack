@@ -40,7 +40,8 @@ execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow
 execute unless predicate pack:is_riding_arrow run kill @e[type=marker]
 
 
-#change to entities nearby?
+#-change to entities nearby?
+#-try leftowner:false
 #lightning arrow
 execute as @a[tag=Archer] at @s run execute run tag @e[type=spectral_arrow,distance=..4] add lightning_arrow 
 execute as @e[type=spectral_arrow,tag=lightning_arrow,nbt={inGround:true}] at @s run summon lightning_bolt ~ ~ ~
