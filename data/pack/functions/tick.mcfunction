@@ -24,18 +24,19 @@ execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
 #--arrow shenanigans--
 #Replace arrow
 
-#execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run summon spectral_arrow ~ ~ ~ {Tags:["new_arrow"],Passengers:[{id:"minecraft:marker",Tags:["arrow_rider"]}]}
+execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run summon spectral_arrow ~ ~ ~ {Tags:["new_arrow"],Passengers:[{id:"minecraft:marker",Tags:["arrow_rider"]}]}
 
-#execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run data modify entity @e[type=spectral_arrow,tag=new_arrow,limit=1,sort=nearest] Motion set from entity @s Motion
-
-execute as @e[tag=lightning_arrow,nbt={LeftOwner:true}] at @s run data modify entity @s Passengers set value {id:"minecraft:marker",Tags:["arrow_rider"]}
-execute as @e[tag=lightning_arrow,nbt={LeftOwner:true}] at @s run summon spectral_arrow ~ ~ ~ {Tags:["new_arrow"],Passengers:[{id:"minecraft:marker",Tags:["arrow_rider"]}]}
 execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run data modify entity @e[type=spectral_arrow,tag=new_arrow,limit=1,sort=nearest] Motion set from entity @s Motion
 
+#execute as @e[tag=lightning_arrow,nbt={LeftOwner:true}] at @s run data modify entity @s Passengers set value {id:"minecraft:marker",Tags:["arrow_rider"]}
+#execute as @e[tag=lightning_arrow,nbt={LeftOwner:true}] at @s run summon spectral_arrow ~ ~ ~ {Tags:["new_arrow"],Passengers:[{id:"minecraft:marker",Tags:["arrow_rider"]}]}
+#execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run data modify entity @e[type=spectral_arrow,tag=new_arrow,limit=1,sort=nearest] Motion set from entity @s Motion
+
 kill @e[type=spectral_arrow,nbt={LeftOwner:true},tag=lightning_arrow]
+
 #Event
-execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow run summon lightning_bolt ~ ~ ~
-execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow run playsound entity.wolf.hurt master @a
+#execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow run summon lightning_bolt ~ ~ ~
+#execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow run playsound entity.wolf.hurt master @a
 
 execute unless predicate pack:is_riding_arrow run kill @e[type=marker]
 
