@@ -6,7 +6,7 @@ scoreboard players add @e[type=armor_stand,tag=particles] iz.timer 1
 #kill @e[type=armor_stand,tag=particles,scores={iz.timer=100}]
 
 #rotate?
-execute as @e[type=armor_stand,tag=particles] at @s run tp @s ~ ~ ~ ~1 ~
+execute as @e[type=armor_stand,tag=particles] at @s run tp @s ~ ~ ~ ~0.5 ~
 
 
 
