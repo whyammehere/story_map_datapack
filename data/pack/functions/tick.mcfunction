@@ -26,7 +26,7 @@ execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
 #NoGravity?
 
 #add tag to originial arrow
-execute as @a[tag=Archer] at @s run execute as @e[type=spectral_arrow,distance=..4] run execute unless predicate pack:new_arrow run tag @s add lightning_arrow 
+execute as @a[tag=Archer] at @s run execute as @e[type=spectral_arrow,distance=..4] run execute unless predicate pack:new_lightning_arrow run tag @s add lightning_arrow 
 
 #create new arrow and modify data
 execute as @e[type=spectral_arrow,tag=lightning_arrow] at @s run summon spectral_arrow ~ ~ ~ {Tags:["new_lightning_arrow"],HasVisualFire:true,Passengers:[{id:"minecraft:marker",Glowing:true,Tags:["arrow_rider"]}]}
