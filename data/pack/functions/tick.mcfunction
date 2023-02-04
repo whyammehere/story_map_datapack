@@ -20,7 +20,6 @@ execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
 
 
 
-
 #--arrow shenanigans--
 
 #lightning arrow
@@ -45,8 +44,10 @@ execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow
 
 
 
-
 #frag arrow (proximity)
+
+
+
 
 
 #wand
