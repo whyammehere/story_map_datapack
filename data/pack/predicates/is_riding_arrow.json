@@ -4,7 +4,7 @@
   "predicate": {
     "nbt": "{Tags:[\"arrow_rider\"]}",
     "vehicle": {
-      "type": "minecraft:arrow"
+      "type": "minecraft:spectral_arrow"
     }
   }
 }

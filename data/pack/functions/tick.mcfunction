@@ -11,7 +11,7 @@ kill @e[type=armor_stand,tag=duration150,scores={iz.timer=150..}]
 function pack:particles
 
 #fireball
-execute as @a at @s if score @s iz.wand matches 1.. run execute if score @s iz.cooldown matches 0 run function pack:fireball
+execute as @a at @s if score @s iz.wand matches 1.. run execute if score @s iz.cooldown matches ..0 run function pack:fireball
 
 #snowball shenanigans
 execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
@@ -22,31 +22,29 @@ execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
 
 
 #--arrow shenanigans--
-#Replace arrow
 
-execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run summon spectral_arrow ~ ~ ~ {Tags:["new_arrow"],Passengers:[{id:"minecraft:marker",Tags:["arrow_rider"]}]}
-
-execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run data modify entity @e[type=spectral_arrow,tag=new_arrow,limit=1,sort=nearest] Motion set from entity @s Motion
-
-#execute as @e[tag=lightning_arrow,nbt={LeftOwner:true}] at @s run data modify entity @s Passengers set value {id:"minecraft:marker",Tags:["arrow_rider"]}
-#execute as @e[tag=lightning_arrow,nbt={LeftOwner:true}] at @s run summon spectral_arrow ~ ~ ~ {Tags:["new_arrow"],Passengers:[{id:"minecraft:marker",Tags:["arrow_rider"]}]}
-#execute as @e[type=spectral_arrow,nbt={LeftOwner:true}] at @s run data modify entity @e[type=spectral_arrow,tag=new_arrow,limit=1,sort=nearest] Motion set from entity @s Motion
-
-kill @e[type=spectral_arrow,nbt={LeftOwner:true},tag=lightning_arrow]
-
-#Event
-#execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow run summon lightning_bolt ~ ~ ~
-#execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow run playsound entity.wolf.hurt master @a
-
-execute unless predicate pack:is_riding_arrow run kill @e[type=marker]
-
-
-#-change to entities nearby?
-#-try leftowner:false
 #lightning arrow
-execute as @a[tag=Archer] at @s run execute run tag @e[type=spectral_arrow,distance=..4] add lightning_arrow 
-execute as @e[type=spectral_arrow,tag=lightning_arrow,nbt={inGround:true}] at @s run summon lightning_bolt ~ ~ ~
-kill @e[type=spectral_arrow,tag=lightning_arrow,nbt={inGround:true}]
+#NoGravity?
+
+#add tag to originial arrow
+execute as @a[tag=Archer] at @s run execute as @e[type=spectral_arrow,distance=..4] run execute unless predicate pack:new_arrow run tag @s add lightning_arrow 
+
+#create new arrow and modify data
+execute as @e[type=spectral_arrow,tag=lightning_arrow] at @s run summon spectral_arrow ~ ~ ~ {Tags:["new_lightning_arrow"],HasVisualFire:true,Passengers:[{id:"minecraft:marker",Glowing:true,Tags:["arrow_rider"]}]}
+
+execute as @e[type=spectral_arrow] at @s run data modify entity @e[type=spectral_arrow,tag=new_lightning_arrow,limit=1,sort=nearest] Motion set from entity @s Motion
+#execute as @e[type=spectral_arrow] at @s run data modify entity @e[type=spectral_arrow,tag=new_lightning_arrow,limit=1,sort=nearest] Rotation set from entity @s Rotation
+
+#kill orginal arrow
+kill @e[tag=lightning_arrow]
+
+#detect if new arrow in ground of hit entity
+kill @e[type=spectral_arrow,tag=new_lightning_arrow,nbt={inGround:true}]
+execute as @e[type=marker,tag=arrow_rider] at @s unless predicate pack:is_riding_arrow run summon lightning_bolt
+execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow run kill @s
+
+
+
 
 #frag arrow (proximity)
 
