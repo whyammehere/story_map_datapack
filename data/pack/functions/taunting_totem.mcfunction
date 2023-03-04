@@ -1,6 +1,6 @@
 execute at @a[scores={Taunt=1..}] run execute as @e[type=!player,distance=..10] at @s run data modify entity @s AngryAt set value []
 execute at @a[scores={Taunt=1..}] run execute as @e[type=!player,distance=..10] at @s run data modify entity @s AngryAt set from entity @p[scores={Taunt=1..},sort=nearest,limit=1] UUID
-execute at @a[scores={Taunt=1..}] run execute as @e[type=!player,distance=..10] run data modify entity @s AngerTime set value 20
+#execute at @a[scores={Taunt=1..}] run execute as @e[type=!player,distance=..10] if entity @a[distance=..10,scores={Taunt=1}] run data modify entity @s AngerTime set value 20
 
 #execute as @e if entity @a[distance=..10,scores={Taunt=0}] run data modify entity @s AngryAt set value []
 
