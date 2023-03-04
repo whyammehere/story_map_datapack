@@ -52,3 +52,12 @@ execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow
 
 #wand
 scoreboard players set @a iz.wand 0
+
+
+#totem shit
+function pack:taunting_totem
+
+
+execute as @a[scores={Taunt=1..}] at @s run execute as @e[type=!player,distance=..10] run data modify entity @s AttackTarget set from entity @a[scores={Taunt=1..},limit=1,sort=nearest] UUID
+
+execute as @e[type=!player,distance=..10] run data get entity @s Target

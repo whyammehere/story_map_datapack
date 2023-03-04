@@ -1,9 +1,12 @@
 {
     "pack": {
-        "pack_format": 9,
-        "description": [
-            {"text":"load the pack already dumbass"}
-        ]
+      "description": "load the pack already dumbass",
+      "pack_format": 9,
+      "dependencies": [
+        {
+          "uuid": "minecraft",
+          "version": "1.19.3"
+        }
+      ]
     }
-
-}
+  }
