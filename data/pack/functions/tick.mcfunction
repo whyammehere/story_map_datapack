@@ -58,7 +58,8 @@ scoreboard players set @a iz.wand 0
 function pack:taunting_totem
 
 
-#random shit
-give @p minecraft:villager_spawn_egg{EntityTag:{id:"villager"}}
-
+#villager shit
 scoreboard players set @a npctalk 0
+
+#random shit
+give @p written_book{pages:['{"text":"yeet","clickEvent":{"action":"run_command","value":"/tp @p ~ ~10 ~"}}'],title:Book,author:"http://minecraft.tools/"}
