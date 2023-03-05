@@ -62,4 +62,4 @@ function pack:taunting_totem
 scoreboard players set @a npctalk 0
 
 #random shit
-give @p written_book{pages:['{"text":"yeet","clickEvent":{"action":"run_command","value":"/tp @p ~ ~10 ~"}}'],title:Book,author:"http://minecraft.tools/"}
+#give @p written_book{pages:['{"text":"yeet","clickEvent":{"action":"run_command","value":"/tp @p ~ ~10 ~"}}'],title:Book,author:"http://minecraft.tools/"}
