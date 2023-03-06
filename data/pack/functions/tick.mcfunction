@@ -14,7 +14,7 @@ function pack:particles
 execute as @a at @s if score @s iz.wand matches 1.. run execute if score @s iz.cooldown matches ..0 run function pack:fireball
 
 #snowball shenanigans
-execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
+#execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
 
 
 
@@ -59,9 +59,6 @@ function pack:taunting_totem
 
 
 #random shit
+give @p minecraft:villager_spawn_egg{EntityTag:{id:"villager"}}
 
-
-#scoreboard players set @a npctalk 0
-
-#execute at @e[type=minecraft:villager,name=RETAR] ~ ~ ~ tellraw @p[distance=..5,scores={npctalk=1..}] {"text":"FUCKFUCKUFCK"}
-
+scoreboard players set @a npctalk 0
