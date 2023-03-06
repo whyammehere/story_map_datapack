@@ -44,12 +44,6 @@ execute as @e[type=marker,tag=arrow_rider] unless predicate pack:is_riding_arrow
 
 
 
-#frag arrow (proximity)
-
-
-
-
-
 #wand
 scoreboard players set @a iz.wand 0
 
