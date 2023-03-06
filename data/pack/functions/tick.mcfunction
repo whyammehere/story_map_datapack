@@ -53,6 +53,6 @@ function pack:taunting_totem
 
 
 #random shit
-give @p minecraft:villager_spawn_egg{EntityTag:{id:"villager"}}
+
 
 scoreboard players set @a npctalk 0
