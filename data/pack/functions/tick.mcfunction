@@ -59,6 +59,9 @@ function pack:taunting_totem
 
 
 #random shit
-give @p minecraft:villager_spawn_egg{EntityTag:{id:"villager"}}
 
-scoreboard players set @a npctalk 0
+
+#scoreboard players set @a npctalk 0
+
+#execute at @e[type=minecraft:villager,name=RETAR] ~ ~ ~ tellraw @p[distance=..5,scores={npctalk=1..}] {"text":"FUCKFUCKUFCK"}
+
