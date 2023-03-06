@@ -14,7 +14,7 @@ function pack:particles
 execute as @a at @s if score @s iz.wand matches 1.. run execute if score @s iz.cooldown matches ..0 run function pack:fireball
 
 #snowball shenanigans
-execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
+#execute at @e[type=minecraft:snowball] run summon minecraft:lightning_bolt ~ ~ ~
 
 
 
@@ -62,4 +62,4 @@ function pack:taunting_totem
 scoreboard players set @a npctalk 0
 
 #random shit
-#give @p written_book{pages:['{"text":"yeet","clickEvent":{"action":"run_command","value":"/tp @p ~ ~10 ~"}}'],title:Book,author:"http://minecraft.tools/"}
+
